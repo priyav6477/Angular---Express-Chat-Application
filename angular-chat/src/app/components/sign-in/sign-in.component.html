@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Include any necessary CSS files here -->
+    <!-- For example, if you're using Angular Material, include its CSS file -->
+</head>
+<body>
+
+<div class="container">
+    <mat-card style="display: flex; flex-direction: column; max-width: 400px">
+        <mat-card-title>Login</mat-card-title>
+
+        <form [formGroup]="form" (submit)="onSubmit()">
+            <mat-form-field appearance="outline">
+                <mat-icon matSuffix>account_circle</mat-icon>
+                <mat-label style="font-weight: 600;" >Email</mat-label>
+                <input matInput  formControlName="userName" />
+                <mat-error *ngIf="form.controls['userName'].hasError('required')">
+                    Email is required!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-icon matSuffix>password</mat-icon>
+                <mat-label style="font-weight: 600;">Password</mat-label>
+                <input matInput type="password" formControlName="password" />
+                <mat-error *ngIf="form.controls['password'].hasError('required')">
+                    Password is required!
+                </mat-error>
+            </mat-form-field>
+            <div class="text-center">
+                <button mat-raised-button color="primary" type="submit">
+                    Login
+                </button>
+            </div>
+            
+            <p>Don't have an account? <a href="/sign-up">Sign Up</a></p>
+        </form>
+
+
+    </mat-card>
+</div>
+
+<!-- Include any necessary JavaScript files here -->
+<!-- For example, if you're using Angular, include its script files -->
+
+</body>
+</html>

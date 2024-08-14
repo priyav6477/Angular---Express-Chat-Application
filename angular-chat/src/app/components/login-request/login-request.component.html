@@ -1,0 +1,22 @@
+<div class="users-list" *ngIf="users.length > 0">
+  <mat-card *ngFor="let user of users" class="user-card">
+    <mat-card-header>
+      <div mat-card-avatar class="user-avatar">
+        <img style="width: 100%;" [src]="user.user.stepThreeData.profile" alt="User">
+      </div>
+      <mat-card-title>{{ user.user.stepOneData.firstName + " " + user.user.stepOneData.lastName }}</mat-card-title>
+      <mat-card-subtitle>{{ user.user.stepOneData.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Company Name: {{ user.user.stepFourData.companyName }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" class="approve-button"
+        (click)="acceptUser(user.user.stepOneData.email)">Accept</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div *ngIf="users.length == 0">
+  <h2 style="text-align: center;">No Pending Login Requests</h2>
+</div>

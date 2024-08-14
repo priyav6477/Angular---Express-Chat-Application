@@ -1,0 +1,14 @@
+.user-card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mat-card-actions {
+    margin-top: auto; /* Pushes the actions to the bottom */
+  }
+  
+  .approve-button {
+    width: auto; /* or specify a fixed width */
+    align-self: flex-end; /* Aligns the button to the right */
+  }
+  

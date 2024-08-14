@@ -1,0 +1,17 @@
+<mat-nav-list class="sidenav-list">
+  <!-- Display logged in user with profile photo -->
+  <div class="user-profile-card">
+    <img  [src]="user.stepThreeData.profile" style="width: -webkit-fill-available;padding: 20px;" alt="User">
+
+    <!-- <span class="email">{{ user.stepOneData.email }}</span>   -->
+  </div>
+  <span  class="username">{{ user.stepOneData.firstName }} {{ user.stepOneData.lastName }}</span><br>
+  <span class="email">{{ user.stepOneData.email }}</span>
+
+
+  <!-- Logout icon -->
+  <a mat-list-item routerLink="/sign-in" class="logout-link">
+    <mat-icon class="icon">exit_to_app</mat-icon>
+    <span>Logout</span>
+  </a>
+</mat-nav-list>

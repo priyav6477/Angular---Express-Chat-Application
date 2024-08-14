@@ -1,0 +1,95 @@
+<div class="container">
+    <h2 style="margin-top: 2%;margin-bottom:2%;" class="text-center">Edit Profile</h2>
+    <div class="example-container">
+        <form [formGroup]="addShopFormGroup" (ngSubmit)="onSubmit()" class="example-form">
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName">
+                        <mat-error *ngIf="checkError('firstName', 'required')">First Name is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName">
+                        <mat-error *ngIf="checkError('lastName', 'required')">Last Name is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Mobile Number</mat-label>
+                        <input matInput formControlName="mobile">
+                        <mat-error *ngIf="checkError('mobile', 'required')">Mobile Number is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Date of Birth</mat-label>
+                        <input matInput [matDatepicker]="datepicker" required formControlName="dateofBirth">
+                        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #datepicker>
+                            <mat-datepicker-actions>
+                                <button mat-button matDatepickerCancel>Cancel</button>
+                                <button mat-raised-button color="primary" matDatepickerApply>Select</button>
+                            </mat-datepicker-actions>
+                        </mat-datepicker>
+                        <mat-error *ngIf="checkError('dateofBirth', 'required')">Date of Birth is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Gender</mat-label>
+                        <mat-select required formControlName="gender">
+                            <mat-option value="Male">Male</mat-option>
+                            <mat-option value="Female">Female</mat-option>
+                            <mat-option value="Transgender">Transgender</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="checkError('gender', 'required')">Gender is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Company Name</mat-label>
+                        <input matInput formControlName="companyName">
+                        <mat-error *ngIf="checkError('companyName', 'required')">Company Name is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Company Address</mat-label>
+                        <textarea matInput formControlName="companyAddress"></textarea>
+                        <mat-error *ngIf="checkError('companyAddress', 'required')">Company Address is required</mat-error>
+                    </mat-form-field>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input formControlName="profile" #Image type="file" (change)="handleFileInput($event)" />
+                </div>
+                <div class="col" *ngIf="imageUrl">
+                    <mat-card class="example-card">
+                        <mat-card-header>
+                            <div mat-card-avatar class="example-header-image"></div>
+                            <mat-card-title>Preview Image</mat-card-title>
+                        </mat-card-header>
+                        <img width="100%" [src]="imageUrl" alt="" class="image">
+                    </mat-card>
+                </div>
+            </div>
+            <div class="text-center">
+                <!-- <button type="submit" [disabled]="!addShopFormGroup.valid" >Submit</button> -->
+                <button mat-flat-button  color="primary">Submit</button>
+
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="navtabs-container">
+  <nav mat-tab-nav-bar fxFlex fxLayout="row" fxLayoutAlign="center center" [tabPanel]="tabPanel">
+    <!-- Show these tabs for admins -->
+    <a mat-tab-link *ngIf="userType === 'admin'" routerLink="/navbar/register-request" routerLinkActive
+      #accomodation="routerLinkActive" [active]="accomodation.isActive">
+      User Approval
+    </a>
+
+    <a mat-tab-link *ngIf="userType === 'admin'" routerLink="/navbar/login-request" routerLinkActive
+      #food_beverage="routerLinkActive" mat-tab-link [active]="food_beverage.isActive">
+      Login Approval
+    </a>
+
+    <a mat-tab-link *ngIf="userType === 'admin'" routerLink="/navbar/view-chats" routerLinkActive
+      #lifestyle="routerLinkActive" mat-tab-link [active]="lifestyle.isActive">
+      Chats
+    </a>
+
+    <!-- Show these tabs for regular users -->
+    <a mat-tab-link *ngIf="userType === 'user'" routerLink="/navbar/friend-request" routerLinkActive
+      #addFriend="routerLinkActive" mat-tab-link [active]="addFriend.isActive">
+      Add Friend
+    </a>
+    <a mat-tab-link *ngIf="userType === 'user'" routerLink="/navbar/fetch-friends" routerLinkActive
+      #editProfile="routerLinkActive" mat-tab-link [active]="editProfile.isActive">
+      Friend Request
+    </a>
+
+
+    <a mat-tab-link *ngIf="userType === 'user'" routerLink="/navbar/chat" routerLinkActive #chat="routerLinkActive"
+      mat-tab-link [active]="chat.isActive">
+      Chat
+    </a>
+
+    <a mat-tab-link *ngIf="userType === 'user'" routerLink="/navbar/profile-edit" routerLinkActive
+      #editProfile="routerLinkActive" mat-tab-link [active]="editProfile.isActive">
+      Edit Profile
+    </a>
+  </nav>
+
+  <mat-tab-nav-panel #tabPanel>
+  </mat-tab-nav-panel>
+</div>

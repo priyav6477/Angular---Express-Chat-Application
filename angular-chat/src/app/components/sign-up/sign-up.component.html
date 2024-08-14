@@ -1,0 +1,239 @@
+<body>
+    <div class="container">
+        <h2 style="text-align: center;padding-top: 20px;"> Register </h2>
+        <!-- [linear]="isLinear" -->
+        <mat-horizontal-stepper [linear]="isLinear"  #stepper labelPosition="bottom">
+            <mat-step [stepControl]="formNameGroup">
+                <div class="container" style="padding-top: 3%;">
+                    <form [formGroup]="formNameGroup">
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon>check</mat-icon>
+                        </ng-template>
+                        <ng-template matStepLabel>Personal Details</ng-template>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>First Name</mat-label>
+                                    <input matInput required formControlName="firstName">
+                                    <mat-error *ngIf="formNameGroup.controls['firstName'].hasError('required')">
+                                        First Name is required!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Last Name</mat-label>
+                                    <input matInput required formControlName="lastName">
+                                    <mat-error *ngIf="formNameGroup.controls['lastName'].hasError('required')">
+                                        Last Name is required!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Mobile Number</mat-label>
+                                    <input matInput required formControlName="mobile" maxlength="10">
+                                    <mat-error *ngIf="formNameGroup.controls['mobile'].hasError('required')">
+                                        Mobile Number is required!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput required formControlName="email">
+                                    <mat-error *ngIf="formNameGroup.controls['email'].hasError('required')">
+                                        Email is required!
+                                    </mat-error>
+                                    <mat-error *ngIf="formNameGroup.controls['email'].hasError('email')">
+                                        Email is invalid!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input matInput required formControlName="password" type="password">
+                                    <mat-error *ngIf="formNameGroup.controls['password'].hasError('required')">
+                                        Password is required!
+                                    </mat-error>
+                                    <mat-error *ngIf="formNameGroup.controls['password'].hasError('minlength')">
+                                        Password must be at least 6 characters!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Confirm Password</mat-label>
+                                    <input matInput required type="password" formControlName="confirmPassword">
+                                    <mat-error *ngIf="formNameGroup.controls['confirmPassword'].hasError('required')">
+                                        Confirm Password is required!
+                                    </mat-error>
+                                    <mat-error *ngIf="formNameGroup.controls['confirmPassword'].hasError('mustMatch')">
+                                        Confirm Password not match!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <br />
+                        <button mat-raised-button color="primary" matStepperNext (click)="formNameGroup.valid && onNext()">Next</button>
+                    </form>
+                </div>
+            </mat-step>
+
+            <mat-step [stepControl]="formPasswordGroup">
+                <div style="padding-top: 3%;">
+                    <form [formGroup]="formPasswordGroup">
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon>check</mat-icon>
+                        </ng-template>
+                        <ng-template matStepLabel>Additonal Details</ng-template>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field class="example-form-field" appearance="outline">
+                                    <mat-label>Date of Birth</mat-label>
+                                    <input matInput [matDatepicker]="datepicker" required formControlName="dateOfBirth">
+                                    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #datepicker>
+                                        <mat-datepicker-actions>
+                                            <button mat-button matDatepickerCancel>Cancel</button>
+                                            <button mat-raised-button color="primary" matDatepickerApply>Select</button>
+                                        </mat-datepicker-actions>
+                                    </mat-datepicker>
+                                    <mat-error *ngIf="formPasswordGroup.controls['dateOfBirth'].hasError('required')">
+                                        Date of Birth is required!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Gender</mat-label>
+                                    <mat-select required formControlName="gender">
+                                        <mat-option value="Male">Male</mat-option>
+                                        <mat-option value="Female">Female</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="formPasswordGroup.controls['gender'].hasError('required')">
+                                        Gender is required!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <button mat-raised-button color="primary" matStepperPrevious
+                                (click)="onBack()">Back</button> &nbsp; &nbsp;
+                            <button mat-raised-button color="primary" matStepperNext (click)=" formPasswordGroup.valid && onNext()">Next</button>
+                        </div>
+                    </form>
+                </div>
+            </mat-step>
+
+            <mat-step [stepControl]="formEmailGroup">
+                <div style="padding-top: 3%;">
+                    <form [formGroup]="formEmailGroup">
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon>check</mat-icon>
+                        </ng-template>
+                        <ng-template matStepLabel>Upload Photo</ng-template>
+                        <div class="row">
+                            <div class="col">
+                                <input #Image type="file" required formControlName="photo" (change)="handleFileInput($event)" />
+                            </div>
+                            <div class="col" *ngIf="imageUrl">
+                                <mat-card class="example-card">
+                                    <mat-card-header>
+                                        <div mat-card-avatar class="example-header-image"></div>
+                                        <mat-card-title>Preview Image</mat-card-title>
+                                    </mat-card-header>
+                                    <img style="width: 60%;align-self: center;" [src]="imageUrl" alt="" class="image">
+                                </mat-card>
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <button mat-raised-button color="primary" matStepperPrevious
+                                (click)="onBack()">Back</button> &nbsp; &nbsp;
+                            <button mat-raised-button color="primary" matStepperNext (click)="formEmailGroup.valid&& onNext()">Next</button>
+                        </div>
+                    </form>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="formPhoneGroup">
+                <div style="padding-top: 3%;">
+                    <form [formGroup]="formPhoneGroup">
+                        <ng-template matStepperIcon="edit">
+                            <mat-icon>check</mat-icon>
+                        </ng-template>
+                        <ng-template matStepLabel>Company Information</ng-template>
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Company Name</mat-label>
+                                    <input type="text" matInput required formControlName="companyName">
+                                    <mat-error *ngIf="formPhoneGroup.controls['companyName'].hasError('required')">
+                                        Company Name is required!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field class="example-full-width" appearance="outline">
+                                    <mat-label>Company Address</mat-label>
+                                    <textarea name="address" matInput required formControlName="companyAddress"
+                                        id="address" cols="30" rows="5"></textarea>
+                                    <mat-error *ngIf="formPhoneGroup.controls['companyAddress'].hasError('required')">
+                                        Company Address is required!
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <button mat-raised-button color="primary" matStepperPrevious
+                                (click)="onBack()">Back</button> &nbsp; &nbsp;
+                            <button mat-raised-button color="primary" matStepperNext (click)="formPhoneGroup.valid && onNext()">Next</button>
+                        </div>
+                    </form>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Review</ng-template>
+                <h5>You are now done.</h5>
+                <div class="row">
+                    <div class="col">
+                        <p>First Name : {{formNameGroup.controls['firstName'].value}}</p>
+                        <p>Last Name : {{formNameGroup.controls['lastName'].value}}</p>
+                        <p>Mobile Number : {{formNameGroup.controls['mobile'].value}}</p>
+                        <p>Email : {{formNameGroup.controls['email'].value}}</p>
+                        <p>Date of Birth : {{formPasswordGroup.controls['dateOfBirth'].value}}</p>
+                        <p>Gender : {{formPasswordGroup.controls['gender'].value}}</p>
+                        <p>Company Name : {{formPhoneGroup.controls['companyName'].value}}</p>
+                        <p>Company Address : {{formPhoneGroup.controls['companyAddress'].value}}</p>
+                    </div>
+
+                    <div class="col">
+                        <mat-card class="example-card">
+                            <mat-card-header>
+                                <div mat-card-avatar class="example-header-image"></div>
+                                <mat-card-title>Preview Image</mat-card-title>
+                            </mat-card-header>
+                            <img style="width: 50%;align-self: center;" [src]="imageUrl" alt="" class="image">
+                        </mat-card>
+                    </div>
+                </div>
+
+                <div>
+                    <button mat-raised-button color="primary" matStepperPrevious (click)="onBack()">Back</button> &nbsp;
+                    &nbsp;
+                    <button mat-raised-button color="accent" type="submit" (click)="onSubmit()">Submit</button> &nbsp;
+                    &nbsp;
+                </div>
+            </mat-step>
+
+        </mat-horizontal-stepper>
+        <mat-progress-bar class="example-margin" [color]="color" [mode]="mode" [value]="value">
+        </mat-progress-bar>
+    </div>
+</body>

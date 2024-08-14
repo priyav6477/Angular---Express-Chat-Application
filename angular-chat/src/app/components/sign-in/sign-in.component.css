@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    justify-content: center; /* horizontally center */
+    align-items: center; /* vertically center */
+    height: 100vh; /* take full height of viewport */
+}
+
+.mat-mdc-card {
+    max-width: 400px;
+    background-color: aquamarine;
+    padding: 30px;
+    width: 100%; /* take full width of its container */
+}
+
+.mat-mdc-card-title{
+    margin-bottom: 20px;
+    font-size: xx-large;
+    text-align: center;
+}
+
+p{
+    text-align: center;
+    margin-top: 5px;
+}
+
+body {
+    background-image: url("/assets/download6.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

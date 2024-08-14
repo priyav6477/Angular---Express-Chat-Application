@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-mdc-form-field {
+    width: 100%;
+}
+
+.mat-mdc-tab-links {
+    background-color: lightblue;
+    color: azure;
+    display: flex;
+    flex: 1 0 auto;
+}
+
+.mat-mdc-tab-link .mdc-tab__text-label {
+    color: black !important;
+    font-weight: 550;
+    display: inline-flex;
+    align-items: center;
+}
